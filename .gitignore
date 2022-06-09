@@ -1,0 +1,6 @@
+# Ignoring credentials.json and token.json as I don't want these informations to spread on the internet.
+credentials.json
+token.json
+
+# Ignoring dates.txt as it's a generated file
+dates.txt
