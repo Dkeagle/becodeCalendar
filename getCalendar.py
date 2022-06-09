@@ -47,7 +47,7 @@ def main():
         monday -= datetime.timedelta(days=monday.weekday())
         monday = str(monday) + "T08:00:00.000000Z"        
         events_result = service.events().list(calendarId='c_kvj8digsqnaqh4u9bo8957q8f0@group.calendar.google.com', timeMin=monday,
-                                              maxResults=20, singleEvents=True,
+                                              maxResults=30, singleEvents=True,
                                               orderBy='startTime').execute()
         events = events_result.get('items', [])
 
