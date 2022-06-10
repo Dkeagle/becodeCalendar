@@ -1,10 +1,22 @@
 /**
+ * Return today's date formated to DD/MM/YYYY format
+ */
+function getTodayDate(){
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = String(date.getMonth() + 1).padStart(2, "0");
+    let day = String(date.getDate()).padStart(2, "0");
+    return "" + day + "/" + month + "/" + year;
+}
+
+/**
  * Create divs with elements gathered by the XHR request and append them to the main div
  * @param {array} dates 
  * @param {string} lastUpdate 
  * @param {objectHTMLelement} div
  */
 function generateHTML(dates, lastUpdate, div){
+    let today = getTodayDate();
     // Append the last update date to the div in the header
     let updateDiv = document.getElementById("lastUpdate");
     updateDiv.innerHTML = lastUpdate;
@@ -20,8 +32,12 @@ function generateHTML(dates, lastUpdate, div){
         // Replace dashes in date with spaces and format date
         date.innerHTML = date.innerHTML.split("-").reverse().join("/");
         // Add classes depending to the content
-        if (text.innerHTML == "On site") box.classList += "onsite";
-        if (text.innerHTML == "Remote") box.classList += "remote";
+        if (text.innerHTML == "On site") box.classList = "onsite";
+        if (text.innerHTML == "Remote") box.classList = "remote";
+        if (date.innerHTML == today){
+            box.classList = "today";
+            date.innerHTML = "Today";
+        } 
         // Appends the elements to the main div
         box.appendChild(date);
         box.appendChild(text);

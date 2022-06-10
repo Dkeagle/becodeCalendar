@@ -61,19 +61,25 @@ body{
 }
 
 #main div.remote{
-    border: 3px solid #DE6B48;
+    border: 3px outset #DE6B48;
     background-color: #ECAB98;
 }
 
 #main div.onsite{
-    border: 3px solid #1EA896;
+    border: 3px outset #1EA896;
     background-color: #97EDE1;
+}
+
+#main div.today{
+    border: 3px solid #534B62;
+    background-color: #D0BCD5;
 }
 
 #main p{
     white-space: nowrap;
     font-size: 1.3em;
     line-height: 1.5em;
+    min-width: 9ch;
 }
 
 /* MEDIA QUERIES */
