@@ -71,7 +71,7 @@ body{
 }
 
 #main div.today{
-    border: 3px solid #534B62;
+    border: 3px outset #534B62;
     background-color: #D0BCD5;
 }
 
