@@ -6,6 +6,7 @@ while($line = fgets($file)){
 }
 fclose($file);
 
-echo "Last update: ".date("d F Y H:i:s", filemtime("dates.txt"))."\n";
+date_default_timezone_set("Europe/Brussels");
+echo date("d M Y H:i", filemtime("dates.txt"))."\n";
 
 ?>

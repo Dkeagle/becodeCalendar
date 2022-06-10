@@ -1,5 +1,114 @@
+/* GENERAL */
 *, *::before, *::after{
     margin: 0;
     padding: 0;
-    font-size: 16px;
+    font-size: 14px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    background: linear-gradient(45deg, #534B62, #A499B3);
+    min-height: 100vh;
+}
+
+/* HEADER */
+#header{
+    width: 100%;
+    background-color: #1B1725;
+    box-shadow: 0px 10px 50px black;
+    height: 50px;
+    color: #D0BCD5;
+    line-height: 50px;
+}
+
+#header h1::after{
+    content: "BeCode Calendar";
+    float: left;
+    font-size: 1.3em;
+    margin-left: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#header p{
+    float: right;
+    margin-right: 20px;
+}
+
+#header p::before{
+    content: "Last update: ";
+}
+
+/* MAIN */
+#main{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: auto;
+    width: 80%;
+    margin-top: 70px;
+    transition: all ease .3s;
+}
+
+#main div{
+    width: fit-content;
+    padding: 50px 80px;
+    background-color: #B5DF90;
+    border: 3px solid #60992D;
+    border-radius: 15px 30px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 30px;
+    transition: all ease .3s;
+}
+
+#main div.remote{
+    border: 3px solid #DE6B48;
+    background-color: #ECAB98;
+}
+
+#main div.onsite{
+    border: 3px solid #1EA896;
+    background-color: #97EDE1;
+}
+
+#main p{
+    white-space: nowrap;
+    font-size: 1.3em;
+    line-height: 1.5em;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1600px){
+    #main{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1300px){
+    #main div{
+        padding: 30px 50px;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    #main div{
+        padding: 30px 30px;
+    }
+}
+
+@media screen and (max-width: 800px){
+    #header h1::after{
+        content: "BeCode";
+    }
+
+    #header p::before{
+        content: "";
+    }
+
+    #main{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #main div{
+        padding: 50px 80px;
+    }
 }
