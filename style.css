@@ -52,7 +52,7 @@ body{
     width: fit-content;
     padding: 50px 80px;
     background-color: #B5DF90;
-    border: 3px solid #60992D;
+    border: 3px outset #60992D;
     border-radius: 15px 30px;
     text-align: center;
     margin: auto;
