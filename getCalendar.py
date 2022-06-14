@@ -3,7 +3,6 @@ from __future__ import print_function
 
 import datetime
 import os.path
-import re
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -13,9 +12,6 @@ from googleapiclient.errors import HttpError
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-
-# Regex to check event is for complete day
-regex = "^\d{4}-\d{2}-\d{2}$"
 
 def main():
     """Shows basic usage of the Google Calendar API.
@@ -55,18 +51,24 @@ def main():
             print('No upcoming events found.')
             return
 
-        # Prints the start and name of the next 10 events
+        # Prints the start and name of the next 10 days
         i = 0
+        last_date = "1970-01-01"
+        line = ""
         with open('dates.txt', 'w') as f:
             for event in events:
-                if i >= 10: 
-                    break
                 start = event['start'].get('dateTime', event['start'].get('date'))
-                if re.match(regex, start):
-                    f.write(f"{start} {event['summary']}\n")
+                new_date = start[0:10]
+                if new_date != last_date:
+                    if not i == 0:
+                        f.write(f"{line}\n")
                     i += 1
-
-            
+                    last_date = new_date
+                    line = f"{new_date}@@@{event['summary']}"
+                else:
+                    line += f"@@@{start[11:16]} {event['summary']}"
+                if i > 10: 
+                    break
 
     except HttpError as error:
         print('An error occurred: %s' % error)
