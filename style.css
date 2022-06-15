@@ -141,7 +141,6 @@ body{
 
     #main{
         grid-template-columns: repeat(1, 1fr);
-        width: 80%;
     }
 
     #main div p:nth-child(1n+3){
