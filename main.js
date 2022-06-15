@@ -21,28 +21,6 @@ function generateHTML(dates, lastUpdate, div){
     let updateDiv = document.getElementById("lastUpdate");
     updateDiv.innerHTML = lastUpdate;
     // Create div element with each date
-        // for(let i = 0; i < dates.length; i++){
-        //     // Create the elements
-        //     let box = document.createElement("div");
-        //     let date = document.createElement("p");
-        //     let text = document.createElement("p");
-        //     // Add text and date to elements
-        //     date.innerHTML = dates[i].substring(0, dates[i].indexOf(" "));
-        //     text.innerHTML = dates[i].substring(dates[i].indexOf(" ") + 1);
-        //     // Replace dashes in date with spaces and format date
-        //     date.innerHTML = date.innerHTML.split("-").reverse().join("/");
-        //     // Add classes depending to the content
-        //     if (text.innerHTML == "On site") box.classList = "onsite";
-        //     if (text.innerHTML == "Remote") box.classList = "remote";
-        //     if (date.innerHTML == today){
-        //         box.classList = "today";
-        //         date.innerHTML = "Today";
-        //     } 
-        //     // Appends the elements to the main div
-        //     box.appendChild(date);
-        //     box.appendChild(text);
-        //     div.appendChild(box);
-        // }
     dates.forEach(date => {
         let splitted = date.split("@@@");
         let box = document.createElement("div");
@@ -71,9 +49,11 @@ function generateHTML(dates, lastUpdate, div){
                     element.innerHTML = splitted[i];
                     break;
                 default:
-                    element.title = splitted[i];
-                    let tmp = splitted[i].split(" ");
-                    element.innerHTML = tmp[0] + " " + tmp[1];
+                    let scrollBox = document.createElement("span");
+                    scrollBox.innerHTML = splitted[i];
+                    element.appendChild(scrollBox);
+                    if(splitted[i].length > 30) element.classList = "scrollBox";
+                    break;
             }
             box.appendChild(element);
             div.appendChild(box);

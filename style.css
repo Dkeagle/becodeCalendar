@@ -1,7 +1,3 @@
-/* TODO => Rework CSS to new format */
-/* TODO => Bold dates */
-/* TODO => Events spaced from date and remote|onsite|today */
-
 /* GENERAL */
 *, *::before, *::after{
     margin: 0;
@@ -53,15 +49,13 @@ body{
 }
 
 #main div{
-    width: fit-content;
-    padding: 50px 80px;
+    padding: 10px 0;
     background-color: #B5DF90;
     border: 3px outset #60992D;
     border-radius: 15px 30px;
     text-align: center;
-    margin: auto;
+    margin: 0 5px;
     margin-bottom: 30px;
-    transition: all ease .3s;
 }
 
 #main div.remote{
@@ -79,29 +73,60 @@ body{
     background-color: #D0BCD5;
 }
 
-#main p{
+#main div p{
     white-space: nowrap;
     font-size: 1.3em;
     line-height: 1.5em;
-    min-width: 9ch;
+    margin: auto;
+}
+
+#main div p:first-child{
+    font-weight: bold;
+}
+
+#main div p:nth-child(2){
+    margin-bottom: 20px;
+}
+
+#main div p:nth-child(1n+3){
+    max-width: 20ch;
+}
+
+#main div span{
+    font-size: 1em;
+}
+
+#main div p.scrollBox{
+    overflow: hidden;
+}
+
+#main div p.scrollBox > span{
+    display: inline-block;
+    white-space: nowrap;
+    animation: scrolling 7s infinite linear;
+    padding-left: 100%;
+}
+
+#main div p.scrollBox:hover{
+    animation-play-state:paused;
+}
+
+/* KEYFRAMES */
+@keyframes scrolling{
+    0%{
+        -webkit-transform: translate(0);
+        transform: translate(0);
+    }
+    100%{
+        -webkit-transform: translate(-100%);
+        transform: translate(-100%);
+    }
 }
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1600px){
     #main{
         width: 100%;
-    }
-}
-
-@media screen and (max-width: 1300px){
-    #main div{
-        padding: 30px 50px;
-    }
-}
-
-@media screen and (max-width: 1000px){
-    #main div{
-        padding: 30px 30px;
     }
 }
 
@@ -116,9 +141,10 @@ body{
 
     #main{
         grid-template-columns: repeat(1, 1fr);
+        width: 80%;
     }
 
-    #main div{
-        padding: 50px 80px;
+    #main div p:nth-child(1n+3){
+        max-width: 30ch;
     }
 }
