@@ -52,7 +52,7 @@ function generateHTML(dates, lastUpdate, div){
                     let scrollBox = document.createElement("span");
                     scrollBox.innerHTML = splitted[i];
                     element.appendChild(scrollBox);
-                    if(splitted[i].length > 25) element.classList = "scrollBox";
+                    if(splitted[i].length > 20) element.classList = "scrollBox";
                     break;
             }
             box.appendChild(element);
